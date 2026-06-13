@@ -1,4 +1,4 @@
-# ✨ HireReady AI — Python Edition
+# ✨ HireReady AI 
 
 Smart ATS Resume Analyzer & Optimizer, converted from a single HTML file to a proper **Flask** web app.
 
