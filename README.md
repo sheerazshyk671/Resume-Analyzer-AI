@@ -1,28 +1,37 @@
 # 🚀 HireReady AI
 
-An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes for Applicant Tracking Systems (ATS), improve keyword matching, and receive intelligent career recommendations using LLM-powered analysis.
+An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes for Applicant Tracking Systems (ATS), improve keyword matching, and receive intelligent AI-driven recommendations tailored to specific job descriptions.
+
+---
 
 ## ✨ Features
 
 ### 📊 ATS Resume Scoring
 
 * Analyze resumes against job descriptions
-* Generate ATS compatibility scores (0-100)
-* Detailed score breakdown:
+* Generate ATS compatibility scores (0–100)
+* Detailed scoring breakdown:
 
-  * Keyword Match
+  * Keyword Matching
   * Resume Sections
   * Experience
   * Action Verbs
   * Formatting
 
+### 📄 Resume Upload & Parsing
+
+* Upload PDF resumes
+* Upload DOCX resumes
+* Automatic text extraction
+* Resume content processing for ATS evaluation
+
 ### 🤖 AI-Powered Resume Analysis
 
-* Resume strengths identification
-* Critical gap detection
-* ATS optimization suggestions
-* Skills recommendation engine
-* Personalized improvement tips
+* Identify resume strengths
+* Detect critical skill and keyword gaps
+* Provide ATS optimization suggestions
+* Recommend missing skills from job descriptions
+* Deliver personalized improvement tips
 
 ### 📈 Keyword Analysis
 
@@ -31,18 +40,11 @@ An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes 
 * Highlight missing keywords
 * Calculate keyword match percentage
 
-### 📝 Professional CV Generation
-
-* Generate ATS-friendly PDF resumes
-* Clean professional formatting
-* Multiple resume sections supported
-* Download-ready PDF output
-
 ### 🕒 Analysis History
 
-* Store previous resume analyses
-* View score history
-* Track resume improvements over time
+* Store recent resume analyses
+* Review previous ATS scores
+* Track improvements over time
 
 ---
 
@@ -52,20 +54,17 @@ An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes 
 
 * Python
 * Flask
-* Groq API
 * Requests
 
-### AI & NLP
+### AI Integration
 
+* Groq API
 * Llama 4 Scout Model
-* Keyword Extraction
-* Resume Optimization Logic
 
 ### Document Processing
 
-* ReportLab
-* Python-Docx
 * PyMuPDF
+* Python-Docx
 
 ### Deployment
 
@@ -82,7 +81,6 @@ An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes 
 HireReady-AI/
 │
 ├── app.py
-├── cv_generator.py
 ├── requirements.txt
 ├── Procfile
 ├── .env
@@ -123,7 +121,7 @@ Activate:
 venv\Scripts\activate
 ```
 
-**Linux / Mac**
+**Linux / macOS**
 
 ```bash
 source venv/bin/activate
@@ -166,7 +164,7 @@ http://localhost:5000
 | ------ | ----------------- | ------------------- |
 | GET    | /                 | Home Page           |
 | POST   | /api/analyze      | ATS Resume Analysis |
-| POST   | /api/ai-analysis  | AI Career Feedback  |
+| POST   | /api/ai-analysis  | AI Resume Feedback  |
 | GET    | /api/history      | Analysis History    |
 | DELETE | /api/history/<id> | Delete History Item |
 
@@ -182,19 +180,7 @@ http://localhost:5000
 | Action Verbs     | 15%    |
 | Formatting       | 10%    |
 
-Total Score: **100 Points**
-
----
-
-## 🌟 Future Improvements
-
-* Resume Upload (PDF/DOCX)
-* AI Resume Rewriter
-* Cover Letter Generator
-* LinkedIn Profile Analyzer
-* Multi-language Support
-* User Authentication
-* Cloud Database Integration
+**Total Score: 100 Points**
 
 ---
 
@@ -205,6 +191,16 @@ Total Score: **100 Points**
 * Software Engineers
 * Data Scientists
 * Machine Learning Engineers
+* Career switchers
 * Job seekers preparing ATS-friendly resumes
 
 ---
+
+## 🌟 Future Improvements
+
+* AI Resume Rewriter
+* Cover Letter Generator
+* LinkedIn Profile Analyzer
+* User Authentication
+* Cloud Database Integration
+* Advanced ATS Analytics
