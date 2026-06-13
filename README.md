@@ -1,96 +1,210 @@
-# ✨ HireReady AI — Python Edition
+# 🚀 HireReady AI
 
-Smart ATS Resume Analyzer & Optimizer, converted from a single HTML file to a proper **Flask** web app.
+An AI-powered ATS Resume Analyzer that helps job seekers optimize their resumes for Applicant Tracking Systems (ATS), improve keyword matching, and receive intelligent career recommendations using LLM-powered analysis.
+
+## ✨ Features
+
+### 📊 ATS Resume Scoring
+
+* Analyze resumes against job descriptions
+* Generate ATS compatibility scores (0-100)
+* Detailed score breakdown:
+
+  * Keyword Match
+  * Resume Sections
+  * Experience
+  * Action Verbs
+  * Formatting
+
+### 🤖 AI-Powered Resume Analysis
+
+* Resume strengths identification
+* Critical gap detection
+* ATS optimization suggestions
+* Skills recommendation engine
+* Personalized improvement tips
+
+### 📈 Keyword Analysis
+
+* Extract keywords from job descriptions
+* Identify matched keywords
+* Highlight missing keywords
+* Calculate keyword match percentage
+
+### 📝 Professional CV Generation
+
+* Generate ATS-friendly PDF resumes
+* Clean professional formatting
+* Multiple resume sections supported
+* Download-ready PDF output
+
+### 🕒 Analysis History
+
+* Store previous resume analyses
+* View score history
+* Track resume improvements over time
 
 ---
 
-## 🗂 Project Structure
+## 🛠️ Tech Stack
 
-```
-hireready/
-├── app.py              # Flask backend — scoring logic + Groq API routes
-├── templates/
-│   └── index.html      # Frontend (same design as original)
+### Backend
+
+* Python
+* Flask
+* Groq API
+* Requests
+
+### AI & NLP
+
+* Llama 4 Scout Model
+* Keyword Extraction
+* Resume Optimization Logic
+
+### Document Processing
+
+* ReportLab
+* Python-Docx
+* PyMuPDF
+
+### Deployment
+
+* Gunicorn
+* Render
+* Railway
+* Heroku
+
+---
+
+## 📂 Project Structure
+
+```bash
+HireReady-AI/
+│
+├── app.py
+├── cv_generator.py
 ├── requirements.txt
-├── Procfile            # For Render / Railway / Heroku
-├── .env.example
+├── Procfile
+├── .env
+│
+├── templates/
+│   └── index.html
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── assets/
+│
 └── README.md
 ```
 
 ---
 
-## ⚡ Local Setup
+## ⚙️ Installation
+
+### 1. Clone Repository
 
 ```bash
-# 1. Clone / unzip the project
-cd hireready
+git clone https://github.com/yourusername/HireReady-AI.git
+cd HireReady-AI
+```
 
-# 2. Create a virtual environment
+### 2. Create Virtual Environment
+
+```bash
 python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
+```
 
-# 3. Install dependencies
+Activate:
+
+**Windows**
+
+```bash
+venv\Scripts\activate
+```
+
+**Linux / Mac**
+
+```bash
+source venv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
 pip install -r requirements.txt
+```
 
-# 4. Set environment variables
-cp .env.example .env
-# Edit .env and add your GROQ_API_KEY
+### 4. Configure Environment Variables
 
-# 5. Run
+Create a `.env` file:
+
+```env
+GROQ_API_KEY=your_groq_api_key
+FLASK_SECRET_KEY=your_secret_key
+FLASK_DEBUG=true
+PORT=5000
+```
+
+### 5. Run Application
+
+```bash
 python app.py
 ```
 
-Open http://localhost:5000
+Open:
+
+```text
+http://localhost:5000
+```
 
 ---
 
-## 🔑 Environment Variables
+## 🔌 API Endpoints
 
-| Variable          | Required | Description                                      |
-|-------------------|----------|--------------------------------------------------|
-| `GROQ_API_KEY`    | ✅       | Your Groq API key (https://console.groq.com)     |
-| `FLASK_SECRET_KEY`| ✅       | Random string for session encryption             |
-| `FLASK_DEBUG`     | ❌       | `true` for dev, `false` for prod (default)       |
-| `PORT`            | ❌       | Port to listen on (default: 5000)                |
-
----
-
-## 🚀 Deploy to Render (Free)
-
-1. Push to a GitHub repo
-2. Go to https://render.com → **New Web Service**
-3. Connect your repo
-4. Set **Build Command**: `pip install -r requirements.txt`
-5. Set **Start Command**: `gunicorn app:app`
-6. Add environment variables in the Render dashboard
-7. Deploy!
+| Method | Endpoint          | Description         |
+| ------ | ----------------- | ------------------- |
+| GET    | /                 | Home Page           |
+| POST   | /api/analyze      | ATS Resume Analysis |
+| POST   | /api/ai-analysis  | AI Career Feedback  |
+| GET    | /api/history      | Analysis History    |
+| DELETE | /api/history/<id> | Delete History Item |
 
 ---
 
-## 🔄 What Changed vs the HTML Version
+## 📊 ATS Scoring Criteria
 
-| Feature              | Original (HTML)           | Python Edition              |
-|----------------------|---------------------------|-----------------------------|
-| Hosting              | Netlify + build.js        | Any Python host (Render etc)|
-| API key security     | Build-time injection      | Server-side env vars ✅     |
-| Firebase auth        | Google Auth + Firestore   | Removed (session-based) *   |
-| History storage      | Firestore + localStorage  | Flask sessions (last 10)    |
-| Scoring logic        | Client-side JS            | Server-side Python          |
-| Groq AI calls        | Browser fetch             | Server-side requests        |
-| PDF/DOCX extraction  | pdf.js + mammoth (browser)| pdf.js + mammoth (browser)  |
-| PDF export           | html2pdf.js (browser)     | html2pdf.js (browser)       |
+| Category         | Weight |
+| ---------------- | ------ |
+| Keyword Matching | 40%    |
+| Resume Sections  | 20%    |
+| Experience       | 15%    |
+| Action Verbs     | 15%    |
+| Formatting       | 10%    |
 
-*Firebase auth can be re-added if needed — the backend is straightforward to extend.
+Total Score: **100 Points**
 
 ---
 
-## 📡 API Endpoints
+## 🌟 Future Improvements
 
-| Method | Path                   | Description                  |
-|--------|------------------------|------------------------------|
-| GET    | `/`                    | Main app                     |
-| POST   | `/api/analyze`         | Score resume vs job desc     |
-| POST   | `/api/ai-analysis`     | Groq AI career coach         |
-| POST   | `/api/improve-resume`  | Groq AI resume rewriter      |
-| GET    | `/api/history`         | Session history (last 10)    |
-| DELETE | `/api/history/<id>`    | Delete a history entry       |
+* Resume Upload (PDF/DOCX)
+* AI Resume Rewriter
+* Cover Letter Generator
+* LinkedIn Profile Analyzer
+* Multi-language Support
+* User Authentication
+* Cloud Database Integration
+
+---
+
+## 🎯 Use Cases
+
+* Students applying for internships
+* Fresh graduates
+* Software Engineers
+* Data Scientists
+* Machine Learning Engineers
+* Job seekers preparing ATS-friendly resumes
+
+---
